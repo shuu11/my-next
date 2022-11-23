@@ -55,11 +55,15 @@ export default function Layout(props: Props) {
 
 			<main>{children}</main>
 
-			{home !== true ? (<>
-			<div className={scss.backToHome}>
-				<Link href="/">← Back to home</Link>
-			</div>
-			</>):(<></>) }
+			{home !== true ? (
+				<>
+					<div className={scss.backToHome}>
+						<Link href="/">← Back to home</Link>
+					</div>
+				</>
+			) : (
+				<></>
+			)}
 		</div>
 	);
 }

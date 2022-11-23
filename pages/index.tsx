@@ -3,13 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Layout, { siteTitle } from '../components/layout';
 
-import { getSortedPostsData } from '../lib/posts.mjs';
+import { PostsData, getSortedPostsData } from '../lib/posts.ts';
 
 import scss from '/styles/Home.module.scss';
 import utilscss from '../styles/utils.module.scss';
 
 export async function getStaticProps() {
-	const allPostsData = getSortedPostsData();
+	const allPostsData: PostsData = getSortedPostsData();
 
 	return {
 		props: {
@@ -18,7 +18,7 @@ export async function getStaticProps() {
 	};
 }
 
-export default function Home({ allPostsData }) {
+export default function Home({ allPostsData }: PostsData) {
 	return (
 		<Layout home={true}>
 			<Head>
@@ -36,15 +36,17 @@ export default function Home({ allPostsData }) {
 			<section className={`${utilscss.headingMd} ${utilscss.padding1px}`}>
 				<h2 className={utilscss.headingLg}>Blog</h2>
 				<ul className={utilscss.list}>
-					{allPostsData.map(({ id, date, title }) => {
-						<li className={utilscss.listItem} key={id}>
-							{title}
-							<br />
-							{id}
-							<br />
-							{date}
-							<br />
-						</li>;
+					{allPostsData.map(({ id, date, title }:PostsData) => {
+						return (
+							<li className={utilscss.listItem} key={id}>
+								{title}
+								<br />
+								{id}
+								<br />
+								{date}
+								<br />
+							</li>
+						);
 					})}
 				</ul>
 			</section>

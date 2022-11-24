@@ -26,7 +26,13 @@ export const getSortedPostsData = (): PostsData[] => {
 		const fileContents: string = fs.readFileSync(fullPath, 'utf8');
 
 		// Use gray-matter to parse the post metadata section
-		const matterResult = matter(fileContents);
+		// const matterResult = matter(fileContents);
+		const matterResult = {
+			data: {
+				date: '2022-1-1',
+				title: 'ssr-ss333',
+			},
+		};
 
 		return {
 			id: id,
@@ -77,7 +83,14 @@ export async function getPostData(id: string): GetPostData {
 	const fileContents: string = fs.readFileSync(fullPath, 'utf8');
 
 	// Use gray-matter to parse the post metadata section
-	const matterResult = matter(fileContents);
+	// const matterResult = matter(fileContents);
+	const matterResult = {
+		content: 'こんにちは',
+		data: {
+			date: '2022-1-1',
+			title: 'ssr-ss333',
+		},
+	};
 
 	// Use remark to convert markdown into HTML string
 	const processedContent = await remark().use(html).process(matterResult.content);

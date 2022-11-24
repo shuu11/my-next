@@ -1,8 +1,4 @@
-import React from 'react';
-
-import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
+import { React, Head, Image, Link } from 'nextImport';
 
 import scss from '@components/layout.module.scss';
 import utilscss from '@styles/utils.module.scss';

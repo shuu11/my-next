@@ -1,6 +1,5 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
+import { React, Head, Image, Link } from 'nextImport';
+
 import Layout, { siteTitle } from '@components/layout';
 
 import { PostsData, getSortedPostsData } from '@lib/posts.ts';

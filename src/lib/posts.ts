@@ -44,3 +44,40 @@ export const getSortedPostsData = (): PostsData => {
 		}
 	});
 };
+
+export type Ids = {
+	params: {
+		id: string;
+	};
+}[];
+
+export function getAllPostIds(): Ids {
+	const fileNames: string[] = fs.readdirSync(postsDirectory);
+
+	return fileNames.map((fileName) => {
+		return {
+			params: {
+				id: fileName.replace(/\.md$/, ''),
+			},
+		};
+	});
+}
+
+export type GetPostData = {
+	id: string;
+	date: string;
+	title: string;
+};
+
+export function getPostData(id: string): GetPostData {
+	const fullPath: string = path.join(postsDirectory, `${id}.md`);
+	const fileContents: string = fs.readFileSync(fullPath, 'utf8');
+
+	// Use gray-matter to parse the post metadata section
+	const matterResult = matter(fileContents);
+
+	return {
+		id: id,
+		...matterResult.data,
+	};
+}

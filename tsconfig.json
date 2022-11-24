@@ -38,7 +38,7 @@
 		"next-env.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
-		"src/pages/posts/[id].jsx",
+		"src/pages/posts/[id].tsx",
 		"src/pages/index.tsx",
 		"src/lib/posts.ts"
 	],

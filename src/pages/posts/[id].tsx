@@ -1,4 +1,6 @@
 import { React, Head, Image, Link, Script } from 'nextImport';
+import Date from '@components/date';
+
 import { Ids, getAllPostIds } from '@lib/posts.ts';
 import { GetPostsData, getPostData } from '@lib/posts.ts';
 import Layout from '@components/layout';
@@ -15,7 +17,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	};
 };
 
-
 export const getStaticProps: GetStaticProps<{ postData: GetPostsData[] }> = async ({ params }: Ids) => {
 	const postData: GetPostsData = await getPostData(params.id);
 
@@ -29,11 +30,14 @@ export const getStaticProps: GetStaticProps<{ postData: GetPostsData[] }> = asyn
 export default function Post({ postData }: GetPostsData) {
 	return (
 		<Layout home={false}>
+			<Head>
+				<title>{postData.title}</title>
+			</Head>
 			{postData.title}
 			<br />
 			{postData.id}
 			<br />
-			{postData.date}
+			<Date dateString={postData.date}></Date>
 			<br />
 			<div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
 		</Layout>

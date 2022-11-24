@@ -1,5 +1,20 @@
 {
 	"compilerOptions": {
+		"baseUrl": "./src",
+		"paths": {
+			"@components/*": [
+				"./components/*"
+			],
+			"@styles/*": [
+				"./styles/*"
+			],
+			"@lib/*": [
+				"./lib/*"
+			],
+			"@posts/*": [
+				"./posts/*"
+			],
+		},
 		"target": "es5",
 		"lib": [
 			"dom",
@@ -17,17 +32,17 @@
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
-		"incremental": true
+		"incremental": true,
 	},
 	"include": [
 		"next-env.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
-		"pages/posts/[id].jsx",
-		"pages/index.tsx",
-		"lib/posts.ts"
+		"src/pages/posts/[id].jsx",
+		"src/pages/index.tsx",
+		"src/lib/posts.ts"
 	],
 	"exclude": [
 		"node_modules"
-	]
+	],
 }

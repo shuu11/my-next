@@ -8,7 +8,7 @@ export type PostsData = {
 	title: string;
 }[];
 
-const postsDirectory: string = path.join(process.cwd(), '/posts');
+const postsDirectory: string = path.join(process.cwd(), './src/posts');
 
 export const getSortedPostsData = (): PostsData => {
 	// Get file names under /posts

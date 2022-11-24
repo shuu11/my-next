@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import Layout, { siteTitle } from '../components/layout';
+import Layout, { siteTitle } from '@components/layout';
 
-import { PostsData, getSortedPostsData } from '../lib/posts.ts';
+import { PostsData, getSortedPostsData } from '@lib/posts.ts';
 
-import scss from '/styles/Home.module.scss';
-import utilscss from '../styles/utils.module.scss';
+import scss from '@styles/Home.module.scss';
+import utilscss from '@styles/utils.module.scss';
 
 export async function getStaticProps() {
 	const allPostsData: PostsData = getSortedPostsData();
@@ -36,7 +36,7 @@ export default function Home({ allPostsData }: PostsData) {
 			<section className={`${utilscss.headingMd} ${utilscss.padding1px}`}>
 				<h2 className={utilscss.headingLg}>Blog</h2>
 				<ul className={utilscss.list}>
-					{allPostsData.map(({ id, date, title }:PostsData) => {
+					{allPostsData.map(({ id, date, title }: PostsData) => {
 						return (
 							<li className={utilscss.listItem} key={id}>
 								{title}

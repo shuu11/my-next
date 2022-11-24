@@ -4,8 +4,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import scss from './layout.module.scss';
-import utilscss from '../styles/utils.module.scss';
+import scss from '@components/layout.module.scss';
+import utilscss from '@styles/utils.module.scss';
 
 const name: string = 'your name';
 export const siteTitle: string = 'Next.js Sample Website';

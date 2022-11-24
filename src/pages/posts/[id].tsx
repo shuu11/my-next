@@ -5,7 +5,6 @@ import Layout from '@components/layout';
 
 import { GetStaticProps } from 'next';
 import { GetStaticPaths } from 'next';
-import { PostsData } from '@lib/posts';
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const paths: Ids = getAllPostIds();
@@ -18,7 +17,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 
 export const getStaticProps: GetStaticProps<{ postData: GetPostsData[] }> = async ({ params }: Ids) => {
-	const postData: GetPostsData = getPostData(params.id);
+	const postData: GetPostsData = await getPostData(params.id);
 
 	return {
 		props: {
@@ -35,6 +34,8 @@ export default function Post({ postData }: GetPostsData) {
 			{postData.id}
 			<br />
 			{postData.date}
+			<br />
+			<div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
 		</Layout>
 	);
 }

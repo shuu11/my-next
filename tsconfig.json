@@ -41,7 +41,7 @@
 		"src/pages/posts/[id].tsx",
 		"src/pages/index.tsx",
 		"src/lib/posts.ts"
-	],
+, "src/components/date.jsx"	],
 	"exclude": [
 		"node_modules"
 	],

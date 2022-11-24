@@ -1,5 +1,4 @@
 import { React, Head, Image, Link, Script } from 'nextImport';
-import Date from '@components/date';
 
 import { Ids, getAllPostIds } from '@lib/posts.ts';
 import { GetPostsData, getPostData } from '@lib/posts.ts';
@@ -37,7 +36,7 @@ export default function Post({ postData }: GetPostsData) {
 			<br />
 			{postData.id}
 			<br />
-			<Date dateString={postData.date}></Date>
+			{postData.date}
 			<br />
 			<div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
 		</Layout>

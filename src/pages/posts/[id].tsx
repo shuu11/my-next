@@ -4,18 +4,20 @@ import { GetPostsData, getPostData } from '@lib/posts.ts';
 import Layout from '@components/layout';
 
 import { GetStaticProps } from 'next';
+import { GetStaticPaths } from 'next';
+import { PostsData } from '@lib/posts';
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
 	const paths: Ids = getAllPostIds();
 
 	return {
 		paths: paths,
 		fallback: false,
 	};
-}
+};
 
 
-export async function getStaticProps({ params }) {
+export const getStaticProps: GetStaticProps<{ postData: GetPostsData[] }> = async ({ params }: Ids) => {
 	const postData: GetPostsData = getPostData(params.id);
 
 	return {
@@ -23,18 +25,16 @@ export async function getStaticProps({ params }) {
 			postData,
 		},
 	};
-}
+};
 
 export default function Post({ postData }: GetPostsData) {
 	return (
-		<div>
-			<Layout home={false}>
-				{postData.title}
-				<br />
-				{postData.id}
-				<br />
-				{postData.date}
-			</Layout>
-		</div>
+		<Layout home={false}>
+			{postData.title}
+			<br />
+			{postData.id}
+			<br />
+			{postData.date}
+		</Layout>
 	);
 }

@@ -6,15 +6,15 @@ export type PostsData = {
 	id: string;
 	date: string;
 	title: string;
-}[];
+};
 
 const postsDirectory: string = path.join(process.cwd(), './src/posts');
 
-export const getSortedPostsData = (): PostsData => {
+export const getSortedPostsData = (): PostsData[] => {
 	// Get file names under /posts
 	const fileNames: string[] = fs.readdirSync(postsDirectory);
 
-	const allPostsData: PostsData = fileNames.map((fileName) => {
+	const allPostsData: PostsData[] = fileNames.map((fileName) => {
 		// Remove '.md' from file name to get id
 		const id: string = fileName.replace(/\.md$/, '');
 
@@ -49,9 +49,9 @@ export type Ids = {
 	params: {
 		id: string;
 	};
-}[];
+};
 
-export function getAllPostIds(): Ids {
+export function getAllPostIds(): Ids[] {
 	const fileNames: string[] = fs.readdirSync(postsDirectory);
 
 	return fileNames.map((fileName) => {
